@@ -16,7 +16,7 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-version = "1.0"
+version = "${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revision}_${config.version.mc}"
 group = "com.bigxplosion.emb"
 archivesBaseName = "EvenMoreBackpacks"
 
@@ -30,7 +30,7 @@ minecraft {
     runDir = "run"
     mappings = config.version.mappings
 
-    replace "@VERSION@", project.version
+    replace "@VERSION@", "${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revision}"
 }
 
 dependencies {
